@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title></title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			body,html{
+				/*height: 100%;
+				width: 100%;*/
+				background-image: url(../public/images/body_bg.jpg);
+				background-position: center center;
+				background-size: cover;
+			}
+			.box{
+				margin: 50px auto;
+				text-align: center;
+				
+			}
+			textarea{
+				border-radius: 10px;
+				padding: 10px;
+			}
+		  .login_tip{
+		  	position: fixed;
+		  	box-sizing: border-box;
+		  	width: 100%;
+		  	height: 100%;
+		  	background: lavender;
+		  	padding-top: 200px;
+		  	opacity: 0.9;
+		  	display: none;
+		  }
+		  .login_tipActive{
+		  	display: block;
+		  }
+		  section{
+		  	text-align: center;
+		  	width: 500px;
+		  	height: 200px;
+		  	margin:0 auto;
+		  }
+		  .login_tipDiv{
+		  	width: 50%;
+		  	height: 100px;
+		  	border-radius: 30px;
+		  	background: silver;
+		  	text-align: center;
+		  	line-height: 100px;
+		  	margin-bottom: 30px;
+		  	display: none;
+		  }
+		  section button{
+		  	width: 100px;
+		  	height: 100px;
+		  	border: 1px solid navajowhite;
+		  	border-radius: 50px;
+		  	margin-bottom: 30px;
+		  	outline: none;
+		  	cursor: pointer;
+		  }
+		 
+	
+	   
+	   
+	   
+	   
+	   
+	   
+	     .content,.data{
+	   	font-size: 12px;
+	   	display: inline-block;
+	   	vertical-align: bottom;
+	   }
+	   .data{
+	   	margin-left: -100px;
+	   }
+	    .blogText{
+	     	
+	     	padding:30px 15px;
+	     	color: black;
+	     	font-family: arial;
+	     	font-size:25px;
+	     }
+	     .myUl{
+	   	width: 65%;
+	   	left: 17.5%;
+	   	border: 3px solid lightgoldenrodyellow;
+	   	padding: 20px;
+	   	border-radius: 10px;
+	   	background: lightgrey;
+	   	box-shadow:0px 4px 27px 0px antiquewhite;
+	   	margin: 100px auto;
+	   }
+	   .myUlActive{
+	   	display: none;
+	   }
+	   .myUl li{
+	   	cursor: pointer;
+	   	padding: 20px;
+	   	border: 1px solid black;
+	    list-style: none;
+	   	margin-bottom: 20px;
+	   	background-image: url(../public/images/bg-02.jpg);
+	   	border-radius: 20px;
+	   }
+	   .num{
+	   	font-size: 13px;
+	   }
+	   .content{
+	   	margin-right: 20px;
+	   }
+	   .content,.data{
+	   	font-size: 12px;
+	   	display: inline-block;
+	   }
+	   .comment{
+	   	display: none;
+	   	z-index: 200;
+	   	position: fixed;
+	   	top: 0;
+	   	left: 0;
+	   	width:100%;
+	   	height: 100%;
+	   	background: grey;
+	   	border: 1px solid cornsilk;
+	   	border-radius: 10px;
+	   	opacity:0.9 ;
+	   }
+	   .commentSmall{
+	   	width:100%;
+	   	height: 100%;
+	   	position: absolute;
+	   	top: 25%;
+	   	left: 25%;
+	   }
+	   .commentText{
+	   	outline: none;
+	   	width: 50%;
+	   	height: 50%;
+	   	border-radius: 20px;
+	   	text-indent: 20px;
+	   }
+	     .toComment,.return{
+	     	position: absolute;
+		    left: 30%;
+		    margin-top: 30px;
+		    color: white;
+		    background: black;
+	     }
+	     .return{
+	     left: 10%;}
+	     .commentActive{
+	     	display: block;
+	     }
+	     .headerLi{
+	     	text-align: center;
+	     	font-family: serif;
+	     	color: darkslategrey;
+	     	font-size: 19px;
+	     	letter-spacing: 10px;
+	     }
+	     
+	     	     .people{
+	     	display: inline-block;
+	     	width: 70px;
+	     	height: 70px;
+	     	background: url(../public/images/people.jpg);
+	     	border-radius: 50px;
+	     	background-size: cover;
+	     	vertical-align: middle;
+	     	margin-right: 15px;
+	     }
+	     .beCommenter{
+	     	color: black;
+	     	font-size: 20px;
+	     	font-family: "楷体";
+	     }
+	     .commentContent{
+	     	background: darkgray;
+    		padding: 10px 18px;
+    		font-size: 14px;
+    		border: 1px solid #AFD9EE;
+    		border-radius: 5px;
+    		
+    		
+	     }
+	     .people1{
+	     	width: 30px;
+	     	height: 30px;
+	     	background: url(../public/images/people2.jpg);
+	     	background-size: cover;
+	     	border-radius: 50px;
+	     	display: inline-block;
+	     	vertical-align: middle;
+	     	
+	     }
+	     .people2{
+	     	background: url(../public/images/people1.jpg);
+	     	background-size: cover;
+	     }
+	     .pinglunzhe,.bpinglunzhe{
+	     	color: red;
+	     	font-size: 13px;
+	     	margin-right: 7px;
+	     }
+	     .content{
+	     	vertical-align: middle;
+	     	font-size: 15px;
+	     	padding: 3px;
+	     	color: darkslategrey;
+	     }
+	     .commentData{
+	     	font-size: 12px;
+	     	color: white;
+	     	padding: 3px;
+	     }
+	     .operate{
+	        border-radius: 10px;
+	     	border: 1px solid aquamarine;
+	     	padding: 10px;
+	     	margin-top: 15px;
+	     }
+	     .dele,.good,.say{
+	     	border: 1px solid lightsteelblue;
+	     	border-radius: 8px;
+	     	outline: none;
+	     	padding: 10px;
+	     	color: grey;
+	     	margin-right: 5px;
+	     	cursor: pointer;
+	     }
+	     .dele{
+	     	margin-right: 18px;
+	     }
+	     .dele:hover,.good:hover,.say:hover{
+	     	background: white;
+	     	color: gray;
+	     }
+	     .num,.sayNum{
+	     	display: inline-block;
+	     	color: red;
+	     	font-size: 10px;
+	     	margin-right: 10px;
+	     	
+	     }
+		</style>
+	</head>
+	<body>
+		<div class="login_tip">
+			<section class="login_tipSmall">
+				<span class="login_tipDiv">您还没有登录或者注册呢！</span>
+				 <br />
+			    <button class="toLogin">已有账号，去登录</button>
+			    <br />
+			    <button class="toRegister">注册一个</button>
+			     <br />
+			    <button class="toHangout">不想登录，随便逛逛</button>
+			</section>
+			
+		</div>
+	 	<div class="box">
+	 			 <h2>欢迎来到微博主页！</h2>
+			     <textarea cols="55" rows="10" disabled placeholder="说点什么吧...."></textarea>
+			     <br />
+	         	<button>发表</button>
+	 	</div>	
+       
+       
+       
+        <ul class="myUl">
+	        	<li class="headerLi"><i><b>看看大伙都说了什么吧！</b></i></li>
+	        	<% if(toShow){ %>
+	        	<% for(var i=0;i<list.length;i++){ %>
+	        		<% var m=list.length-i-1 %>
+	 				<li>
+	 				<div class="content">
+	 					<span class="people"></span>
+	 					<span class="beCommenter"><%= list[m].user %></span>
+	 					</div>
+	 				<div class="data"><%= list[m].time %></div>
+	 				<div class="blogText">
+	 					<%= list[m].content %>
+	 				</div>
+	 				  <% var commentLength=list[m].commentInfo.length %>
+	 				    <% if(commentLength>0){ %>
+	 					
+	 						<% for(var i=0;i<commentLength;i++){ %>
+	 							<% var n=commentLength-i-1 %>
+	 							<div class="commentContent">
+	 								<div class="people1"></div>
+	 								<span class="pinglunzhe"><%= list[m].commentInfo[n][0] %></span> 评论
+	 								<div class="people1 people2"></div>
+	 								<span class="bpinglunzhe"><%= list[m].commentInfo[n][1] %></span>：
+	 								<span class="content"><%= list[m].commentInfo[n][2] %></span>
+	 								<div class="commentData"><%= list[m].commentInfo[n][3] %></div>
+	 							</div>
+	 					</div>
+	                <% } %>
+	 			    <% } %>	
+	 				<div class="operate">
+	 					<button class="dele">删除</button>
+	 				    <button class="good">点赞</button>
+	 				    <span class="num">(<%= list[m].num.length %>)</span>
+	 				    <button class="say">评论</button>
+	 				    <span class="sayNum">(<%= list[m].commentInfo.length %>)</span>
+	 				  
+	 				
+	 				</div>
+	 			   </li>
+	 			<% } %>
+	 			<% } %>	
+
+		<script type="text/javascript" src="../public/js/jquery-1.11.1.min.js" ></script>
+		<script src="socket.io/socket.io.js"></script>
+		<script>
+			let socket=io();
+			
+			function toToggle(){
+				$('.login_tip').addClass('login_tipActive');
+				$('.login_tip').fadeIn(500);
+				$('.login_tipDiv').slideToggle(3000)
+				$('.myUl').addClass('myUlActive');
+			}
+			$('.box').click(function() {
+				toToggle();
+			    
+		     })
+			$('.dele').click(function() {
+				toToggle();
+			    
+		     })
+			$('.good').click(function() {
+				toToggle();
+			    
+		     })
+			$('.say').click(function() {
+				toToggle();
+			    
+		     })
+			
+		    $('.toLogin').click(function() {
+                location.href="http://localhost:8888/loginPage";
+		     })
+		    
+		     $('.toRegister').click(function() {
+		
+						location.href='http://localhost:8888/registerPage'
+
+		     })
+		     
+		      $('.toHangout').click(function() {
+				$.ajax({
+					type:"get",
+					url:"http://localhost:8888/toHangout",
+					success:function(res){
+						if(res.status){
+							location.href='http://localhost:8888/'
+						}
+						
+					}
+				});
+		     })
+			
+		</script>
+	</body>
+</html>

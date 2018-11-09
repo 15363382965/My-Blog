@@ -1,0 +1,111 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>注册界面</title>
+<link rel="stylesheet" href="../public/css/bootstrap.css" />
+<link rel="stylesheet" href="../public/css/register.css" />
+</head>
+<body class="login_body">
+<div class="login_div">
+	<div class="col-xs-12 login_title">注册</div>
+	
+		<div class="nav">
+			<div class="nav login_nav">
+				<div class="col-xs-12 reg-tip text-center"></div>
+				<div class="col-xs-4 login_username">
+					用户名:
+				</div>
+				<div class="col-xs-6 login_usernameInput">
+					<input class="reg-user" type="text" id="name" value="" placeholder="&nbsp;&nbsp;用户名"/>
+					<span class="reg-useTip"></span>
+				</div>
+				
+			</div>
+			<div class="nav login_psdNav">
+				<div class="col-xs-4">
+					密&nbsp;&nbsp;&nbsp;码:
+				</div>
+				<div class="col-xs-6">
+					<input class="reg-pass" type="password" name="" id="psd" value="" placeholder="&nbsp;&nbsp;密码"/>
+				    <span class="reg-TpassTip"></span>
+				</div>
+			</div>
+			<div class="col-xs-12 login_btn_div">
+				<input type="submit" class="sub_btn reg-btn" value="注册" id="login" />
+			</div>
+	</div>
+	<div class="col-xs-12 barter_btnDiv">
+		<button class="barter_btn">已有账号?前往登录</button>
+	</div>
+</div>
+  <script type="text/javascript" src="../public/js/jquery-1.11.1.js" ></script>
+		<script>
+			
+			$('.reg-user').blur(function(event){
+				if($(this).val()==''){
+					$('.reg-useTip').html('用户名不能为空！')
+				}else{
+					$.ajax({
+	        		type:"post",
+	        		url:"http://localhost:8888/reg_user",
+	        		data:{reg_user:$(this).val()},
+	        		dataType:'json',
+	        		success:function(res,status,xhr){
+	        			console.log(res.status)
+	        			if(!res.status){
+	        				$('.reg-useTip').html('该用户名已经被注册！')
+	        			}else{
+	        				$('.reg-useTip').html('进入下一步！')
+	        			}
+	        				
+        		   }
+        	      })
+				}
+					
+			})
+			
+			
+			$('.reg-pass').blur(function(event){
+				if($(this).val()==''){
+					$('.reg-passTip').html('密码不能为空！！')
+				}else if($('.reg_user').val()==''&&$(this).val()!=''){
+					$('.reg-passTip').html('请先填好用户名！')
+				}
+			})
+			
+			
+			$('.reg-btn').click(function(event){
+				
+				if($('.reg-pass').val()!=''&&$('.reg-user').val()!=''){
+					$.ajax({
+	        		type:"post",
+	        		url:"http://localhost:8888/register",
+	        		data:{reg_user:$('.reg-user').val(),
+	        		      reg_pass:$('.reg-pass').val()},
+	        		dataType:'json',
+	        		success:function(res,status,xhr){
+	        			console.log(res)
+	        			if(res.status){
+	        				location.href="http://localhost:8888/login";
+	        			}
+	        				
+        		      }
+        	      })
+				}else if($('.reg-pass').val()==''&&$('.reg-user').val()==''){
+					$('.reg-tip').html('您还没有输入用户名和密码呢！')
+					
+				}else if($('.reg-pass').val()!=''&&$('.reg-user').val()==''){
+					$('.reg-tip').html('您还没有输入用户名呢！')
+				
+					
+				}else{
+					$('.reg-tip').html('您还没有输入密码呢！')
+					
+				}
+					
+			})
+			
+		</script>
+	</body>
+</html>

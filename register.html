@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style>
+			body{
+				background: lightgrey;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>注册页面</h1>
+		<input placeholder="请输入注册的用户名" type="text" class="reg-user" /><span class="reg-useTip"></span>
+		<br /><br />
+		<input placeholder="请输入注册密码" type="password" class="reg-pass" /><span class="reg-passTip"></span>
+		<br /><br />
+		<button class="reg-btn">注册</button>
+		<script type="text/javascript" src="public/js/jquery-1.11.1.min.js" ></script>
+		<script>
+			$('.reg-user').blur(function(event){
+				if($(this).val()==''){
+					$('.reg-useTip').html('用户名不能为空！')
+				}
+			})
+			
+			
+			$('.reg-pass').blur(function(event){
+				if($(this).val()==''){
+					$('.reg-passTip').html('密码不能为空！！')
+				}
+			})
+		</script>
+	</body>
+</html>

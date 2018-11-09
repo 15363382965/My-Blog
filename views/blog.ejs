@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title></title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			body{
+				background: url(../public/images/body_bg.jpg) no-repeat center center;
+				background-size: 100% 100%;
+			}
+			.blogHeader{
+				color: white;
+				/*height: 15%;*/
+				text-align: center;
+				padding: 10px;
+				margin-bottom: 30px;
+			}
+			.blogHeader h3{
+				font-size: 14px;
+				text-align:right;
+				padding-right: 100px;
+			}
+			.blogHeader .userName{
+				color: green;
+			}
+			.blogHeader span{
+				padding: 10px;
+				display: inline-block;
+				border-radius: 3px;
+				color: darkgrey;
+				
+			}
+			
+			.sendContent{
+				border: 1px solid blanchedalmond;
+				border-radius: 20px;
+				padding: 20px;
+				font-size: 16px;
+				outline: none;
+			}
+			
+			.toSend{
+				margin-top: 15px;
+				background: white;
+				border: 1px solid lightblue;
+				padding: 10px;
+				border-radius: 10px;
+				color: black;
+				font-size: 15px;
+				font-weight: 700;
+				cursor: pointer;
+				transition: all 0.5s;
+			}
+			
+			.toSend:hover{
+				border-color: black;
+				background: black;
+				color: white;
+			}
+			.blogHeader .loginout{
+				cursor: pointer;
+			}
+		  .login_tip{
+		  	position: fixed;
+		  	box-sizing: border-box;
+		  	width: 100%;
+		  	height: 100%;
+		  	background: lavender;
+		  	padding-top: 200px;
+		  	opacity: 0.9;
+		  	display: none;
+		  }
+		  .login_tipActive{
+		  	display: block;
+		  }
+		  section{
+		  	text-align: center;
+		  	width: 500px;
+		  	height: 200px;
+		  	margin:0 auto;
+		  }
+		  .login_tipDiv{
+		  	width: 50%;
+		  	height: 100px;
+		  	border-radius: 30px;
+		  	background: silver;
+		  	text-align: center;
+		  	line-height: 100px;
+		  	margin-bottom: 30px;
+		  	display: none;
+		  }
+		  section button{
+		  	width: 100px;
+		  	height: 100px;
+		  	border: 1px solid navajowhite;
+		  	border-radius: 50px;
+		  	margin-bottom: 30px;
+		  	outline: none;
+		  	cursor: pointer;
+		  }
+		  .contentHeader{
+		  	    position: absolute;
+			   	top: 70px;
+			   	right: 30px;
+		   }
+	   .myUl{
+	   	width: 65%;
+	   	left: 17.5%;
+	   	border: 3px solid lightgoldenrodyellow;
+	   	padding: 20px;
+	   	border-radius: 10px;
+	   	box-shadow:0px 4px 27px 0px black;
+	   	margin: 60px auto;
+	   }
+	   .myUl li{
+	   	box-sizing: border-box;
+	   	padding: 20px;
+	   	border: 1px solid black;
+	    list-style: none;
+	   	margin-bottom: 20px;
+	   	background-image: url(../public/images/bg-02.jpg);
+	   	border-radius: 20px;
+	   }
+	   .num{
+	   	font-size: 13px;
+	   }
+	   .content{
+	   	margin-right: 20px;
+	   }
+	   .content,.data{
+	   	font-size: 12px;
+	   	display: inline-block;
+	   	vertical-align: bottom;
+	   }
+	   .data{
+	   	margin-left: -100px;
+	   }
+	   .comment{
+	   	display: none;
+	   	z-index: 200;
+	   	position: fixed;
+	   	top: 0;
+	   	left: 0;
+	   	width:100%;
+	   	height: 100%;
+	   	background: grey;
+	   	border: 1px solid cornsilk;
+	   	border-radius: 10px;
+	   	opacity:0.9 ;
+	   }
+	   .commentSmall{
+	   	width:100%;
+	   	height: 100%;
+	   	position: absolute;
+	   	top: 25%;
+	   	left: 25%;
+	   }
+	   .commentText{
+	   	outline: none;
+	   	width: 50%;
+	   	height: 50%;
+	   	border-radius: 20px;
+	   	text-indent: 20px;
+	   }
+	     .toComment,.return{
+	     	position: absolute;
+		    left: 30%;
+		    margin-top: 30px;
+		    color: white;
+		    background: black;
+	     }
+	     .return{
+	     left: 10%;}
+	     .commentActive{
+	     	display: block;
+	     }
+	    .headerLi{
+	     	text-align: center;
+	     	font-family: serif;
+	     	color: darkslategrey;
+	     	font-size: 19px;
+	     	letter-spacing: 10px;
+	     }
+	     .blogText{
+	     	
+	     	padding:30px 15px;
+	     	color: black;
+	     	font-family: arial;
+	     	font-size:25px;
+	     }
+	     
+	     
+	     
+	     
+	     .people{
+	     	display: inline-block;
+	     	width: 70px;
+	     	height: 70px;
+	     	background: url(../public/images/people.jpg);
+	     	border-radius: 50px;
+	     	background-size: cover;
+	     	vertical-align: middle;
+	     	margin-right: 15px;
+	     }
+	     .beCommenter{
+	     	color: black;
+	     	font-size: 20px;
+	     	font-family: "楷体";
+	     }
+	     .commentContent{
+	     	background: darkgray;
+    		padding: 10px 18px;
+    		font-size: 14px;
+    		border: 1px solid #AFD9EE;
+    		border-radius: 5px;
+    		
+    		
+	     }
+	     .people1{
+	     	width: 30px;
+	     	height: 30px;
+	     	background: url(../public/images/people2.jpg);
+	     	background-size: cover;
+	     	border-radius: 50px;
+	     	display: inline-block;
+	     	vertical-align: middle;
+	     	
+	     }
+	     .people2{
+	     	background: url(../public/images/people1.jpg);
+	     	background-size: cover;
+	     }
+	     .pinglunzhe,.bpinglunzhe{
+	     	color: red;
+	     	font-size: 13px;
+	     	margin-right: 7px;
+	     }
+	     .content{
+	     	vertical-align: middle;
+	     	font-size: 15px;
+	     	padding: 3px;
+	     	color: darkslategrey;
+	     }
+	     .commentData{
+	     	font-size: 12px;
+	     	color: white;
+	     	padding: 3px;
+	     }
+	     .operate{
+	        border-radius: 10px;
+	     	border: 1px solid aquamarine;
+	     	padding: 10px;
+	     	margin-top: 15px;
+	     }
+	     .dele,.good,.say{
+	     	border: 1px solid lightsteelblue;
+	     	border-radius: 8px;
+	     	outline: none;
+	     	padding: 10px;
+	     	color: grey;
+	     	margin-right: 5px;
+	     	transition: all 0.5s;
+	     }
+	     .dele{
+	     	margin-right: 18px;
+	     }
+	     .dele:hover,.good:hover,.say:hover{
+	     	background: white;
+	     	color: gray;
+	     }
+	     .num,.sayNum{
+	     	display: inline-block;
+	     	color: red;
+	     	font-size: 10px;
+	     	margin-right: 10px;
+	     	
+	     }
+	
+		</style>
+	</head>
+	<body>
+		<div class="blogHeader">
+			<h3	>欢迎您！<span class="userName"><%= user %></span> ||<span class="loginout">退出</span></h3>
+			<textarea class="sendContent"  cols="55" rows="10" placeholder="说点什么吧...."></textarea>
+			<br />
+	        <button class="toSend">发表</button>
+		</div>
+	        <ul class="myUl">
+	        	<li class="headerLi"><i><b>看看大伙都说了什么吧！</b></i></li>
+	        	<% if(toShow){ %>
+	        	<% for(var i=0;i<list.length;i++){ %>
+	        		<% var m=list.length-i-1 %>
+	 				<li>
+	 				<div class="content">
+	 					<span class="people"></span>
+	 					<span class="beCommenter"><%= list[m].user %></span>
+	 					</div>
+	 				<div class="data"><%= list[m].time %></div>
+	 				<div class="blogText">
+	 					<%= list[m].content %>
+	 				</div>
+	 				  <% var commentLength=list[m].commentInfo.length %>
+	 				    <% if(commentLength>0){ %>
+	 					
+	 						<% for(var i=0;i<commentLength;i++){ %>
+	 							<% var n=commentLength-i-1 %>
+	 							<div class="commentContent">
+	 								<div class="people1"></div>
+	 								<span class="pinglunzhe"><%= list[m].commentInfo[n][0] %></span> 评论
+	 								<div class="people1 people2"></div>
+	 								<span class="bpinglunzhe"><%= list[m].commentInfo[n][1] %></span>：
+	 								<span class="content"><%= list[m].commentInfo[n][2] %></span>
+	 								<div class="commentData"><%= list[m].commentInfo[n][3] %></div>
+	 							</div>
+	 				
+	                <% } %>
+	 			    <% } %>	
+	 				<div class="operate">
+	 					<button class="dele">删除</button>
+	 				    <button class="good">点赞</button>
+	 				    <span class="num">(<%= list[m].num.length %>)</span>
+	 				    <button class="say">评论</button>
+	 				    <span class="sayNum">(<%= list[m].commentInfo.length %>)</span>
+	 				  
+	 				
+	 				</div>
+	 			   </li>
+	 			<% } %>
+	 			<% } %>	
+          </ul>
+	 		<div class="comment">
+	 			<div class="commentSmall">
+	 				<textarea class="commentText" placeholder="发表您的评论吧....."cols="50" rows="10" ></textarea>
+	 			<br />
+	 			<button class="toComment">发表评论</button>
+	 			<button class="return">下次再评论</button>
+	 			</div>
+	 			
+	 		</div>
+		<script type="text/javascript" src="../public/js/jquery-1.11.1.min.js" ></script>
+		<script src="socket.io/socket.io.js"></script>
+		<script>
+			
+		  let socket=io();
+		   $('.toSend').click(function(){
+		   	
+		   	    $.ajax({
+					type:"get",
+					url:"http://localhost:8888/upDate",
+					success:function(res){
+						if(res.status){
+							location.href="http://localhost:8888/blog"
+						}
+					}
+				 });
+		   	       var date=new Date();
+		   	       function isTen(a){
+		   	       	  if(a>10){
+		   	       	  	return a;
+		   	       	  }else{
+		   	       	  	return '0'+a;
+		   	       	  }
+		   	       	  
+		   	       }
+		   	       
+		   	       function toWeek(a){
+		   	       	if(a==0) return '星期日';
+		   	       	else if(a==1) return '星期一';
+		   	       	else if(a==2) return '星期二';
+		   	       	else if(a==3) return '星期三';
+		   	       	else if(a==4) return '星期四';
+		   	       	else if(a==5) return '星期五';
+		   	       	else return '星期六';
+		   	       }
+		   	        var year=date.getFullYear();
+		   	        var month=date.getMonth()+1;
+		   	        var day=isTen(date.getDate());
+		   	        var week=toWeek(date.getDay())
+		   	        var hour=isTen(date.getHours())
+		   	        var minute=isTen(date.getMinutes())
+		   	        var second=isTen(date.getSeconds())
+		   	        var time=`${year} 年${month} 月${day} 日 /${week}  ${hour}:${minute}:${second}`
+					socket.emit('sendBlog',{info:$('.sendContent').val(),user:$('.userName').html(),sendTime:time});  
+			      
+		   
+		   });
+
+			
+        $('.dele').click(function(){
+        	$.ajax({
+					type:"post",
+					url:"http://localhost:8888/deleData",
+					data:{
+						time:$(this).parent().parent().children('.data').html(),
+					    user:$('.userName').html()
+					},
+					success:function(res){
+						if(res.status){
+							location.href='http://localhost:8888/blog'
+						}else{
+							alert('不能删除别人的博客哦！');
+						}
+						
+					}
+				});
+        })
+        
+        $('.good').click(function(){
+        	 $.ajax({
+					type:"post",
+					url:"http://localhost:8888/perfect",
+					data:{
+						user:$('.userName').html(),
+						time:$(this).parent().parent().children('.data').html()
+					},
+					success:function(res){
+						if(res.status){
+							location.href='http://localhost:8888/blog'
+						}
+						
+					}
+				});
+        })
+        
+        
+        $('.say').click(function(){
+          	$('.comment').toggleClass('commentActive');
+          	var beCommenttime=$(this).parent().parent().children('.data').html();
+            $('.toComment').click(function(){
+            	 var date=new Date();
+		   	       function isTen(a){
+		   	       	  if(a>10){
+		   	       	  	return a;
+		   	       	  }else{
+		   	       	  	return '0'+a;
+		   	       	  }
+		   	       	  
+		   	       }
+		   	       
+		   	       function toWeek(a){
+		   	       	if(a==0) return '星期日';
+		   	       	else if(a==1) return '星期一';
+		   	       	else if(a==2) return '星期二';
+		   	       	else if(a==3) return '星期三';
+		   	       	else if(a==4) return '星期四';
+		   	       	else if(a==5) return '星期五';
+		   	       	else return '星期六';
+		   	       }
+		   	        var year=date.getFullYear();
+		   	        var month=date.getMonth()+1;
+		   	        var day=isTen(date.getDate());
+		   	        var week=toWeek(date.getDay())
+		   	        var hour=isTen(date.getHours())
+		   	        var minute=isTen(date.getMinutes())
+		   	        var second=isTen(date.getSeconds())
+		   	        var time=`${year} 年${month} 月${day} 日 /${week}  ${hour}:${minute}:${second}`
+        		
+        		$.ajax({
+					type:"post",
+					url:"http://localhost:8888/toComment",
+					data:{
+						beCommenter:$('.beCommenter').html(),
+						commenter:$('.userName').html(),
+						commentText:$('.commentText').val(),
+						commentTime:time,
+						beCommenttime:beCommenttime
+					},
+					success:function(res){
+						if(res.status){
+							location.href='http://localhost:8888/blog'
+						}
+						
+					}
+				});
+        	
+        	
+           })
+          
+			})
+        
+         $('.return').click(function(){
+          	$('.comment').removeClass('commentActive');
+          	
+			})
+        
+        
+        $('.loginout').click(function(){
+            location.href='http://localhost:8888/toLoginout'
+        })
+		</script>
+	</body>
+</html>
